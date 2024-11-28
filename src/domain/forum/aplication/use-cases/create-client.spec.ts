@@ -1,25 +1,26 @@
-import {expect, test} from 'vitest'
+import {expect, test, describe,beforeEach } from 'vitest'
 import { CreateClientUseCase } from './create-client'
-import { ClientsRepository } from '../forum/repositories/clients-repository'
-import { Client } from '../entities/client'
+import { InMemoryClientsRepository } from 'test/repositories/in-memory-clients-repository'
+import { MakeClient } from 'test/factories/make-client'
 
 
-const fakeClientRepository: ClientsRepository = {
-    create: async (client: Client) => {
-        return;
-    }
-}
 
+let inMemoryClientsRepository: InMemoryClientsRepository
+let sut : CreateClientUseCase
 
-test('create client', async () => {
+describe('Create Client', () => { 
+    beforeEach(() => {
+        inMemoryClientsRepository = new InMemoryClientsRepository()
+        sut = new CreateClientUseCase(inMemoryClientsRepository)
+    })
+    
+    test('should be able to create a client', async () => {
 
-    const createClient = new CreateClientUseCase(fakeClientRepository)
+        const newClient = MakeClient()
 
-    const client =  await createClient.execute({
-        name: 'john',
-        fone: '4899911991',
-        password: '1234',
+        await inMemoryClientsRepository.create(newClient)
+
+        expect(inMemoryClientsRepository.items).toHaveLength(1)
     })
 
-    expect(client.name).toEqual('john')
 })

@@ -1,11 +1,11 @@
 import { Entity } from "../../../../core/entities/entity"
 import { UniqueEntityID } from "../../../../core/entities/unique-entity-id"
 
-interface SchedulingProps {
+export interface SchedulingProps {
     id: UniqueEntityID
     clientId: UniqueEntityID
     barberId: UniqueEntityID
-    date: Date
+    date: string
     time: string
 }
 
@@ -26,4 +26,14 @@ export class Scheduling extends Entity<SchedulingProps> {
     get time() {
         return this.props.time
     }
+
+    static create (props: SchedulingProps, id?: UniqueEntityID ) {
+        const scheduling = new Scheduling({
+            ...props,
+        }, id)
+        
+        return scheduling
+    }
+
+
 }

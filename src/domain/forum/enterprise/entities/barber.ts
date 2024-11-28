@@ -1,7 +1,8 @@
+import { Optional } from "@/core/types/optional"
 import { Entity } from "../../../../core/entities/entity"
 import { UniqueEntityID } from "../../../../core/entities/unique-entity-id"
 
-interface BarberProps {
+export interface BarberProps {
     id: UniqueEntityID
     name: string
     fone: string 
@@ -35,6 +36,15 @@ export class Barber extends Entity<BarberProps>  {
 
     set assessment(Assessment: number ) {
      this.props.assessment.push(Assessment)
+    }
+
+static create (props: Optional<BarberProps,'assessment'>, id?: UniqueEntityID) {
+        const barber = new Barber({
+            ...props,
+            assessment: []
+        }, id)
+        
+        return barber
     }
 
 

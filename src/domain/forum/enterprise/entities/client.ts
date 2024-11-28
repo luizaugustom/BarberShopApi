@@ -1,12 +1,13 @@
+import { Optional } from "@/core/types/optional"
 import { Entity } from "../../../../core/entities/entity"
 import { UniqueEntityID } from "../../../../core/entities/unique-entity-id"
 
-interface ClientProps {
+export interface ClientProps {
     id: UniqueEntityID
     name: string
     fone: string
     password: string
-    assessment: number[]
+    assessment?: number[]
 }
 
 export class Client extends Entity<ClientProps> {
@@ -34,10 +35,14 @@ export class Client extends Entity<ClientProps> {
      }}
      
     set assessment(Assessment: number ) {
-     this.props.assessment.push(Assessment)
+      
+         /*if(this.assessment.){
+            this.props.assessment.push(Assessment)
+
+        }*/
     }
 
-    static create (props: ClientProps, id?: UniqueEntityID, assessment? : []) {
+    static create (props: Optional<ClientProps, 'assessment'>, id?: UniqueEntityID,) {
         const client = new Client({
             ...props,
         }, id)
