@@ -1,3 +1,4 @@
+import { Either, right } from "../../../../core/either"
 import { UniqueEntityID } from "../../../../core/entities/unique-entity-id"
 import { Barber } from "../../enterprise/entities/barber"
 import { BarbersRepository } from "../repositories/barbers-repository"
@@ -10,9 +11,7 @@ interface CreateBarberRequest {
     assessment: []
 }
 
-interface CreateBarberResponse {
-    barber: Barber
- }
+type CreateBarberResponse = Either< null ,  { barber: Barber }>
 
 
 export class CreateBarberUseCase {
@@ -29,9 +28,9 @@ export class CreateBarberUseCase {
 
         await this.barberRepository.create(barber)
 
-        return {
+        return right( {
             barber
-        }
+        })
     }
     
 }

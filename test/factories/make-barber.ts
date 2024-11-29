@@ -1,5 +1,5 @@
 import { UniqueEntityID } from "../../src/core/entities/unique-entity-id";
-import { Barber, BarberProps } from "../../src/domain/forum/enterprise/entities/barber";
+import { Barber, BarberProps } from "../../src/domain/barbershop/enterprise/entities/barber";
 
 
 export function MakeBarber(
@@ -10,6 +10,7 @@ export function MakeBarber(
         id: new UniqueEntityID(),
         fone: '4898482590',
         name: 'Example',
+        about: 'taia',
         password: '123456',
         assessment: [],
         ...override,

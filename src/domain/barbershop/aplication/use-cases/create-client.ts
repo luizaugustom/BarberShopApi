@@ -1,3 +1,4 @@
+import { Either, right } from "../../../../core/either"
 import { UniqueEntityID } from "../../../../core/entities/unique-entity-id"
 import { Client } from "../../enterprise/entities/client"
 import { ClientsRepository } from "../repositories/clients-repository"
@@ -10,9 +11,9 @@ interface CreateClientUseCaseRequest {
     
 }
 
-interface CreateClientUseCaseResponse {
+type CreateClientUseCaseResponse = Either < null,  {
     client: Client
-}
+}> 
 
 export class CreateClientUseCase {
     constructor(private clientsRepository: ClientsRepository) {}
@@ -28,8 +29,8 @@ export class CreateClientUseCase {
 
         await this.clientsRepository.create(client)
 
-        return {
+        return right({
             client,
-        }
+        })
 }
 }

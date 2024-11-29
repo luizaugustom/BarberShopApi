@@ -1,6 +1,6 @@
 import { PaginationParams } from "@/core/repositories/pagination-params";
-import { SchedulingRepository } from "@/domain/forum/aplication/repositories/scheduling-repository";
-import { Scheduling } from "@/domain/forum/enterprise/entities/scheduling";
+import { SchedulingRepository } from "@/domain/barbershop/aplication/repositories/scheduling-repository";
+import { Scheduling } from "@/domain/barbershop/enterprise/entities/scheduling";
 
 
 export class InMemorySchedulingRepository implements SchedulingRepository {

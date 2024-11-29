@@ -1,11 +1,13 @@
+import { Either, left, right } from "../../../../core/either"
 import { SchedulingRepository } from "../repositories/scheduling-repository"
+import { ResourceNotFoundError } from "../../../../core/errors/errors/resource-not-found-error"
 
 
 interface DeleteSchedulingRequest {
     SchedulingId: string
     
 }
-interface DeleteSchedulingResponse {}
+type  DeleteSchedulingResponse = Either<ResourceNotFoundError, {}>
 
 
 export class DeleteSchedulingUseCase {
@@ -16,12 +18,12 @@ export class DeleteSchedulingUseCase {
         const scheduling = await this.schedulingRepository.findById(SchedulingId)
 
         if (!scheduling) {
-            throw new Error('Scheduling Not Found')
+            return left(new ResourceNotFoundError())
         }
 
         await this.schedulingRepository.delete(scheduling)
 
-        return {}
+        return right({})
     }
     
 }

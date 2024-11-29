@@ -1,5 +1,5 @@
 import { UniqueEntityID } from "../../src/core/entities/unique-entity-id";
-import { Client, ClientProps } from "../../src/domain/forum/enterprise/entities/client";
+import { Client, ClientProps } from "../../src/domain/barbershop/enterprise/entities/client";
 
 
 export function MakeClient(

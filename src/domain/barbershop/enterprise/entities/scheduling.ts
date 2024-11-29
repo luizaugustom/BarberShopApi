@@ -7,6 +7,11 @@ export interface SchedulingProps {
     barberId: UniqueEntityID
     date: string
     time: string
+    hair: string
+    beard: string
+    finishing: string
+    eyebrow: string
+    value: string
 }
 
 export class Scheduling extends Entity<SchedulingProps> {
@@ -26,6 +31,22 @@ export class Scheduling extends Entity<SchedulingProps> {
     get time() {
         return this.props.time
     }
+    get hair(){
+        return this.props.hair
+    }
+
+    get beard() {
+        return this.props.beard
+    }
+
+    get finishing() {
+        return this.props.finishing
+    }
+
+    get eyebrow() {
+        return this.props.eyebrow
+    }
+    
 
     static create (props: SchedulingProps, id?: UniqueEntityID ) {
         const scheduling = new Scheduling({

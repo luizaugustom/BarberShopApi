@@ -2,7 +2,7 @@ import {expect, test, describe, beforeEach} from 'vitest'
 import { DeleteSchedulingUseCase } from './delete-scheduling-use-case';
 import { InMemorySchedulingRepository } from 'test/repositories/in-memory-scheduling-repository';
 import { MakeScheduling } from 'test/factories/make-scheduling';
-import { UniqueEntityID } from '../../../../core/entities/unique-entity-id';
+
 
 let inMemorySchedulingRepository: InMemorySchedulingRepository
 let sut : DeleteSchedulingUseCase

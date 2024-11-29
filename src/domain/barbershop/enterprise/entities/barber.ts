@@ -5,7 +5,8 @@ import { UniqueEntityID } from "../../../../core/entities/unique-entity-id"
 export interface BarberProps {
     id: UniqueEntityID
     name: string
-    fone: string 
+    fone: string
+    about: string 
     password: string
     assessment: number[]
 }
@@ -20,9 +21,18 @@ export class Barber extends Entity<BarberProps>  {
     get name() {
         return this.props.name
     }
+    get about(){
+        return this.props.about
+    }
 
+    set setAbout(about: string){
+        this.props.about = about
+    }
     get fone() {
         return this.props.fone
+    }
+    set setFone(fone: string) {
+        this.props.fone = fone
     }
     get getAssessment() {
         if (this.props.assessment != undefined) {
